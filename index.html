@@ -1,33 +1,153 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="hi-IN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Website</title>
+    <title>Anil Kothari - Financial Solutions & Calculators</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            text-align: center;
-            padding: 50px;
+        :root {
+            --primary: #00d09c;
+            --secondary: #1e293b;
+            --light: #f8fafc;
+            --text: #334155;
         }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 500px;
-            margin: auto;
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { color: var(--text); background-color: var(--light); line-height: 1.6; }
+        
+        header { background: white; position: sticky; top: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 100; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .logo { font-size: 24px; font-weight: bold; color: var(--secondary); text-decoration: none; }
+        .logo span { color: var(--primary); }
+        nav a { text-decoration: none; color: var(--secondary); font-weight: 600; margin-left: 20px; transition: 0.3s; }
+        nav a:hover { color: var(--primary); }
+
+        section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--secondary); }
+        .section-title::after { content: ''; display: block; width: 50px; height: 4px; background: var(--primary); margin: 10px auto 0; border-radius: 2px; }
+
+        #home { text-align: center; background: radial-gradient(circle at top right, #e2fbf5, white); padding: 80px 20px; border-radius: 0 0 50px 50px; }
+        #home h1 { font-size: 40px; color: var(--secondary); margin-bottom: 20px; }
+        #home p { font-size: 18px; max-width: 600px; margin: 0 auto 30px; color: #64748b; }
+        .btn { display: inline-block; padding: 12px 30px; background: var(--primary); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,208,156,0.3); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,208,156,0.5); }
+
+        .prod-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+        .prod-card { background: white; border-radius: 16px; padding: 30px; width: 45%; min-width: 300px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); text-align: center; border: 1px solid #f1f5f9; }
+        .btn-alt { background: var(--secondary); box-shadow: 0 4px 15px rgba(30,41,59,0.3); }
+
+        /* Calculator UI Custom Style */
+        .calc-layout { display: flex; gap: 30px; margin-top: 20px; }
+        .calc-sidebar { width: 300px; background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); height: fit-content; }
+        .calc-sidebar button { display: block; width: 100%; text-align: left; padding: 12px 15px; margin-bottom: 8px; border: none; background: transparent; font-size: 15px; font-weight: 600; color: var(--secondary); border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        .calc-sidebar button.active, .calc-sidebar button:hover { background: #e2fbf5; color: var(--primary); }
+        
+        .calc-main { flex: 1; background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .calc-panel { display: none; }
+        .calc-panel.active { display: block; }
+        
+        .calc-box { display: flex; flex-wrap: wrap; gap: 30px; }
+        .calc-inputs { flex: 1; min-width: 280px; }
+        .calc-outputs { flex: 1; min-width: 280px; background: #f8fafc; padding: 25px; border-radius: 12px; border-left: 4px solid var(--primary); height: fit-content; }
+        
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--secondary); }
+        .input-group input[type="range"] { width: 100%; accent-color: var(--primary); }
+        .input-group .value-disp { display: flex; justify-content: space-between; font-weight: bold; margin-top: 5px; color: var(--primary); }
+
+        .output-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #e2e8f0; font-size: 16px; }
+        .output-item:last-child { border-bottom: none; font-weight: bold; font-size: 18px; color: var(--secondary); }
+
+        #contact { background: var(--secondary); color: white; border-radius: 50px 50px 0 0; text-align: center; }
+        #contact .section-title { color: white; }
+        .contact-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px; }
+        .contact-item { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; width: 280px; }
+        .contact-item a { color: white; text-decoration: none; font-weight: bold; }
+
+        footer { text-align: center; padding: 20px; background: #0f172a; color: #64748b; font-size: 14px; }
+        @media (max-width: 900px) {
+            .calc-layout { flex-direction: column; }
+            .calc-sidebar { width: 100%; }
         }
-        h1 { color: #333; }
-        p { color: #666; font-size: 18px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Website Coming Soon!</h1>
-        <p>Coming Soon...</p>
-        <p>Contact Forever Funds at 9591411114</p>
-    </div>
-</body>
-</html>
+
+    <header>
+        <div class="nav-container">
+            <a href="#home" class="logo">Wealth<span>Partner</span></a>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#calculators">Calculators</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <h1>Mutual Funds Sahi Hai!</h1>
+        <p>सही फाइनेंशियल टूल्स और कैलकुलेटर्स के साथ अपने भविष्य और सपनों की सही प्लानिंग करें।</p>
+        <a href="#calculators" class="btn">कैलकुलेटर इस्तेमाल करें</a>
+    </section>
+
+    <!-- Products -->
+    <section id="products">
+        <h2 class="section-title">हमारे प्रोडक्ट्स (Products)</h2>
+        <div class="prod-grid">
+            <div class="prod-card">
+                <h3>FundzBazar Web Platform</h3>
+                <p>म्यूचुअल फंड्स में निवेश और अपने पोर्टफोलियो मैनेजमेंट के लिए वेबसाइट पर जाएं।</p>
+                <a href="https://fundzbazar.com" target="_blank" class="btn">Website लिंक</a>
+            </div>
+            <div class="prod-card">
+                <h3>FundzBazar Mobile App</h3>
+                <p>कहीं भी आसानी से इन्वेस्ट करने के लिए हमारा मोबाइल एप्लीकेशन डाउनलोड करें।</p>
+                <a href="https://fundzbazar.com" target="_blank" class="btn btn-alt">Mobile App लिंक</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- All 9 Calculators Section -->
+    <section id="calculators">
+        <h2 class="section-title">फाइनेंशियल कैलकुलेटर Hub</h2>
+        
+        <div class="calc-layout">
+            <!-- Sidebar Navigation for all 9 Calculators -->
+            <div class="calc-sidebar">
+                <button class="calc-btn active" onclick="showCalc('sip', this)">1. SIP Calculator</button>
+                <button class="calc-btn" onclick="showCalc('goal-sip', this)">2. Goal SIP Calculator</button>
+                <button class="calc-btn" onclick="showCalc('smart-goal', this)">3. Smart Goal Calculator</button>
+                <button class="calc-btn" onclick="showCalc('step-up', this)">4. Step-Up SIP Calculator</button>
+                <button class="calc-btn" onclick="showCalc('lump', this)">5. Lumpsum Calculator</button>
+                <button class="calc-btn" onclick="showCalc('swp', this)">6. SWP Calculator</button>
+                <button class="calc-btn" onclick="showCalc('retirement', this)">7. Retirement Planning</button>
+                <button class="calc-btn" onclick="showCalc('inflation', this)">8. Inflation Calculator</button>
+                <button class="calc-btn" onclick="showCalc('delay', this)">9. Cost of Delay</button>
+                <button class="calc-btn" onclick="showCalc('groww-emi', this)">10. Flat vs Reducing EMI</button>
+            </div>
+
+            <!-- Main Display Area -->
+            <div class="calc-main">
+                
+                <!-- 1. SIP Calculator -->
+                <div id="calc-sip" class="calc-panel active">
+                    <h3>SIP Calculator</h3><br>
+                    <div class="calc-box">
+                        <div class="calc-inputs">
+                            <div class="input-group"><label>मासिक निवेश (Monthly Investment)</label><input type="range" id="s1-amt" min="500" max="100000" step="500" value="5000" oninput="runSIP()"><div class="value-disp"><span>₹500</span><span id="s1-amt-t">₹5,000</span></div></div>
+                            <div class="input-group"><label>अपेक्षित रिटर्न (Expected Return % p.a.)</label><input type="range" id="s1-rate" min="1" max="30" step="0.5" value="12" oninput="runSIP()"><div class="value-disp"><span>1%</span><span id="s1-rate-t">12%</span></div></div>
+                            <div class="input-group"><label>समय (Years)</label><input type="range" id="s1-yrs" min="1" max="40" value="10" oninput="runSIP()"><div class="value-disp"><span>1 Yr</span><span id="s1-yrs-t">10 Yrs</span></div></div>
+                        </div>
+                        <div class="calc-outputs">
+                            <div class="output-item"><span>कुल निवेश:</span><span id="s1-o1">₹0</span></div>
+                            <div class="output-item"><span>अनुमानित रिटर्न:</span><span id="s1-o2">₹0</span></div>
+                            <div class="output-item"><span>कुल भविष्य मूल्य:</span><span id="s1-o3">₹0</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Goal SIP Calculator -->
+                <div id="calc-goal-sip" class="calc-panel">
+                    <h3>Goal SIP Calculator</h3><br>
+                    <div class="calc-box">
+                        <div class="calc-inputs">
