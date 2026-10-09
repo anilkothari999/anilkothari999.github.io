@@ -1,153 +1,29 @@
-<!DOCTYPE html>
-<html lang="hi-IN">
+<!doctype html>
+<html lang="en-IN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forever Funds - Financial Solutions & Calculators</title>
-    <style>
-        :root {
-            --primary: #00d09c;
-            --secondary: #1e293b;
-            --light: #f8fafc;
-            --text: #334155;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { color: var(--text); background-color: var(--light); line-height: 1.6; }
-        
-        header { background: white; position: sticky; top: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 100; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
-        .logo { font-size: 24px; font-weight: bold; color: var(--secondary); text-decoration: none; }
-        .logo span { color: var(--primary); }
-        nav a { text-decoration: none; color: var(--secondary); font-weight: 600; margin-left: 20px; transition: 0.3s; }
-        nav a:hover { color: var(--primary); }
-
-        section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--secondary); }
-        .section-title::after { content: ''; display: block; width: 50px; height: 4px; background: var(--primary); margin: 10px auto 0; border-radius: 2px; }
-
-        #home { text-align: center; background: radial-gradient(circle at top right, #e2fbf5, white); padding: 80px 20px; border-radius: 0 0 50px 50px; }
-        #home h1 { font-size: 40px; color: var(--secondary); margin-bottom: 20px; }
-        #home p { font-size: 18px; max-width: 600px; margin: 0 auto 30px; color: #64748b; }
-        .btn { display: inline-block; padding: 12px 30px; background: var(--primary); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,208,156,0.3); }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,208,156,0.5); }
-
-        .prod-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
-        .prod-card { background: white; border-radius: 16px; padding: 30px; width: 45%; min-width: 300px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); text-align: center; border: 1px solid #f1f5f9; }
-        .btn-alt { background: var(--secondary); box-shadow: 0 4px 15px rgba(30,41,59,0.3); }
-
-        /* Calculator UI Custom Style */
-        .calc-layout { display: flex; gap: 30px; margin-top: 20px; }
-        .calc-sidebar { width: 300px; background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); height: fit-content; }
-        .calc-sidebar button { display: block; width: 100%; text-align: left; padding: 12px 15px; margin-bottom: 8px; border: none; background: transparent; font-size: 15px; font-weight: 600; color: var(--secondary); border-radius: 8px; cursor: pointer; transition: 0.3s; }
-        .calc-sidebar button.active, .calc-sidebar button:hover { background: #e2fbf5; color: var(--primary); }
-        
-        .calc-main { flex: 1; background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .calc-panel { display: none; }
-        .calc-panel.active { display: block; }
-        
-        .calc-box { display: flex; flex-wrap: wrap; gap: 30px; }
-        .calc-inputs { flex: 1; min-width: 280px; }
-        .calc-outputs { flex: 1; min-width: 280px; background: #f8fafc; padding: 25px; border-radius: 12px; border-left: 4px solid var(--primary); height: fit-content; }
-        
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--secondary); }
-        .input-group input[type="range"] { width: 100%; accent-color: var(--primary); }
-        .input-group .value-disp { display: flex; justify-content: space-between; font-weight: bold; margin-top: 5px; color: var(--primary); }
-
-        .output-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #e2e8f0; font-size: 16px; }
-        .output-item:last-child { border-bottom: none; font-weight: bold; font-size: 18px; color: var(--secondary); }
-
-        #contact { background: var(--secondary); color: white; border-radius: 50px 50px 0 0; text-align: center; }
-        #contact .section-title { color: white; }
-        .contact-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px; }
-        .contact-item { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; width: 280px; }
-        .contact-item a { color: white; text-decoration: none; font-weight: bold; }
-
-        footer { text-align: center; padding: 20px; background: #0f172a; color: #64748b; font-size: 14px; }
-        @media (max-width: 900px) {
-            .calc-layout { flex-direction: column; }
-            .calc-sidebar { width: 100%; }
-        }
-    </style>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forever Funds by Anil Kothari | Personalised Financial Guidance</title>
+  <meta name="description" content="Explore mutual funds, insurance, bonds, retirement planning and financial calculators with Forever Funds by Anil Kothari, Jaipur.">
+  <meta name="theme-color" content="#17315f"><meta property="og:title" content="Forever Funds by Anil Kothari"><meta property="og:description" content="Thoughtful financial guidance for your goals."><meta property="og:type" content="website"><meta property="og:image" content="assets/logo.png">
+  <link rel="icon" href="assets/logo.png"><link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/config.js"></script><script defer src="js/site.js"></script><script defer src="js/forms.js"></script>
 </head>
-<body>
-
-    <header>
-        <div class="nav-container">
-            <a href="#home" class="logo">Wealth<span>Partner</span></a>
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#products">Products</a>
-                <a href="#calculators">Calculators</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <section id="home">
-        <h1>FOREVER FUNDS!</h1>
-        <p>सही फाइनेंशियल टूल्स और कैलकुलेटर्स के साथ अपने भविष्य और सपनों की सही प्लानिंग करें।</p>
-        <a href="#calculators" class="btn">कैलकुलेटर इस्तेमाल करें</a>
-    </section>
-
-    <!-- Products -->
-    <section id="products">
-        <h2 class="section-title">हमारे प्रोडक्ट्स (Products)</h2>
-        <div class="prod-grid">
-            <div class="prod-card">
-                <h3>FundzBazar Web Platform</h3>
-                <p>म्यूचुअल फंड्स में निवेश और अपने पोर्टफोलियो मैनेजमेंट के लिए वेबसाइट पर जाएं।</p>
-                <a href="                                                                https://fundzbazar.com/Link/DqjxHuy5jT0" target="_blank" class="btn">Website लिंक</a>
-            </div>
-            <div class="prod-card">
-                <h3>FundzBazar Mobile App</h3>
-                <p>कहीं भी आसानी से इन्वेस्ट करने के लिए हमारा मोबाइल एप्लीकेशन डाउनलोड करें।</p>
-                <a href="                                                                https://fundzbazar.com/Link/9AzHLV_nudI" target="_blank" class="btn btn-alt">Mobile App लिंक</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- All 9 Calculators Section -->
-    <section id="calculators">
-        <h2 class="section-title">फाइनेंशियल कैलकुलेटर Hub</h2>
-        
-        <div class="calc-layout">
-            <!-- Sidebar Navigation for all 9 Calculators -->
-            <div class="calc-sidebar">
-                <button class="calc-btn active" onclick="showCalc('sip', this)">1. SIP Calculator</button>
-                <button class="calc-btn" onclick="showCalc('goal-sip', this)">2. Goal SIP Calculator</button>
-                <button class="calc-btn" onclick="showCalc('smart-goal', this)">3. Smart Goal Calculator</button>
-                <button class="calc-btn" onclick="showCalc('step-up', this)">4. Step-Up SIP Calculator</button>
-                <button class="calc-btn" onclick="showCalc('lump', this)">5. Lumpsum Calculator</button>
-                <button class="calc-btn" onclick="showCalc('swp', this)">6. SWP Calculator</button>
-                <button class="calc-btn" onclick="showCalc('retirement', this)">7. Retirement Planning</button>
-                <button class="calc-btn" onclick="showCalc('inflation', this)">8. Inflation Calculator</button>
-                <button class="calc-btn" onclick="showCalc('delay', this)">9. Cost of Delay</button>
-                <button class="calc-btn" onclick="showCalc('groww-emi', this)">10. Flat vs Reducing EMI</button>
-            </div>
-
-            <!-- Main Display Area -->
-            <div class="calc-main">
-                
-                <!-- 1. SIP Calculator -->
-                <div id="calc-sip" class="calc-panel active">
-                    <h3>SIP Calculator</h3><br>
-                    <div class="calc-box">
-                        <div class="calc-inputs">
-                            <div class="input-group"><label>मासिक निवेश (Monthly Investment)</label><input type="range" id="s1-amt" min="500" max="100000" step="500" value="5000" oninput="runSIP()"><div class="value-disp"><span>₹500</span><span id="s1-amt-t">₹5,000</span></div></div>
-                            <div class="input-group"><label>अपेक्षित रिटर्न (Expected Return % p.a.)</label><input type="range" id="s1-rate" min="1" max="30" step="0.5" value="12" oninput="runSIP()"><div class="value-disp"><span>1%</span><span id="s1-rate-t">12%</span></div></div>
-                            <div class="input-group"><label>समय (Years)</label><input type="range" id="s1-yrs" min="1" max="40" value="10" oninput="runSIP()"><div class="value-disp"><span>1 Yr</span><span id="s1-yrs-t">10 Yrs</span></div></div>
-                        </div>
-                        <div class="calc-outputs">
-                            <div class="output-item"><span>कुल निवेश:</span><span id="s1-o1">₹0</span></div>
-                            <div class="output-item"><span>अनुमानित रिटर्न:</span><span id="s1-o2">₹0</span></div>
-                            <div class="output-item"><span>कुल भविष्य मूल्य:</span><span id="s1-o3">₹0</span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. Goal SIP Calculator -->
-                <div id="calc-goal-sip" class="calc-panel">
-                    <h3>Goal SIP Calculator</h3><br>
-                    <div class="calc-box">
-                        <div class="calc-inputs">
+<body><a class="skip-link" href="#main">Skip to content</a><div id="site-header"></div>
+<main id="main">
+<section class="hero wrap"><div class="hero-copy"><p class="eyebrow">Clarity today. Confidence for tomorrow.</p><h1>Your goals deserve a <span>thoughtful plan.</span></h1><p class="lead">Explore investment and insurance options with personalised guidance from Forever Funds.</p><div class="hero-actions"><a class="button" href="pages/contact.html#start-investing">Start Investing</a><a class="button button-outline" href="pages/calculators.html">Explore Calculators</a></div><p class="small muted">Mutual fund investments are subject to market risks.</p></div>
+<div class="lead-card" id="start-investing"><h2>Start your journey</h2><p class="muted">Share your details and continue to our registration partner.</p><form data-submit-kind="lead" data-redirect="https://www.fundzbazar.com/customisedlinkregistration/7c7723/2364252d6721246c3c3f6326246c3c3f63262a74252d6721"><label for="lead-name">Full name</label><input id="lead-name" name="name" autocomplete="name" required maxlength="100"><label for="lead-mobile">Mobile number</label><input id="lead-mobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel-national" pattern="[6-9][0-9]{9}" minlength="10" maxlength="10" required placeholder="10-digit Indian mobile"><label for="lead-email">Email address</label><input id="lead-email" name="email" type="email" autocomplete="email" required maxlength="254"><div class="hp" aria-hidden="true"><label>Leave this field empty<input name="website" tabindex="-1" autocomplete="off"></label></div><label class="consent"><input type="checkbox" name="consent" required><span>I agree to be contacted about my enquiry and have read the <a href="pages/privacy.html">Privacy Policy</a>.</span></label><button class="button full" type="submit">Start Investing <span aria-hidden="true">→</span></button><p class="form-status" role="status" aria-live="polite"></p></form></div></section>
+<section class="trust-strip"><div class="wrap trust-grid"><div><strong>AMFI Registered</strong><span>Mutual Fund Distributor · ARN-349079</span></div><div><strong>Insurance Guidance</strong><span>Insurance is subject matter of solicitation</span></div><div><strong>Zero professional fees</strong><span>See our fee structure for details</span></div></div></section>
+<section class="section wrap"><div class="section-heading"><p class="eyebrow">Explore solutions</p><h2>Financial choices for every chapter</h2><p>Learn about the products that may fit your needs, timeline and comfort with risk.</p></div><div class="card-grid">
+<a class="product-card" href="pages/mutual-funds.html"><span class="card-icon">↗</span><h3>Mutual Funds</h3><p>Equity, debt, hybrid, index and ELSS categories.</p><span class="text-link">Explore funds →</span></a>
+<a class="product-card" href="pages/sif.html"><span class="card-icon">◈</span><h3>Specialised Investment Funds</h3><p>Understand SIF structures, eligibility and risks.</p><span class="text-link">Explore SIF →</span></a>
+<a class="product-card" href="pages/pms.html"><span class="card-icon">▤</span><h3>Portfolio Management</h3><p>Learn how discretionary and other PMS models work.</p><span class="text-link">Explore PMS →</span></a>
+<a class="product-card" href="pages/fixed-deposit.html"><span class="card-icon">▣</span><h3>Fixed Deposits</h3><p>Compare tenure, issuer and liquidity considerations.</p><span class="text-link">Explore deposits →</span></a>
+<a class="product-card" href="pages/bonds.html"><span class="card-icon">◇</span><h3>RBI & Corporate Bonds</h3><p>Understand interest, credit and maturity risks.</p><span class="text-link">Explore bonds →</span></a>
+<a class="product-card" href="pages/insurance.html"><span class="card-icon">＋</span><h3>Insurance</h3><p>Health, term life, motor, travel and more.</p><span class="text-link">Explore cover →</span></a>
+<a class="product-card" href="pages/other-products.html"><span class="card-icon">◎</span><h3>Other Products</h3><p>NPS, stock broking and loan against mutual funds.</p><span class="text-link">Explore options →</span></a>
+<a class="product-card" href="pages/calculators.html"><span class="card-icon">∑</span><h3>Financial Calculators</h3><p>Run illustrative scenarios for common money goals.</p><span class="text-link">Calculate →</span></a>
+</div></section>
+<section class="section soft"><div class="wrap split"><div><p class="eyebrow">Our approach</p><h2>Guidance that starts with you</h2><p>Financial decisions are personal. We help you understand available choices, key trade-offs and how they relate to your priorities—without promising returns.</p><ul class="check-list"><li>Personalised discussions around your goals</li><li>Clear explanations of costs, risks and product features</li><li>Support across investment and insurance enquiries</li></ul><a class="button button-outline" href="pages/contact.html">Talk to an advisor</a></div><div class="highlight-panel"><span class="large-quote">“</span><h3>॥ रक्षितं वर्धते ॥</h3><p>Protected, nurtured and thoughtfully grown.</p><div class="gold-rule"></div><p><strong>Anil Kothari</strong><br><span class="muted">Forever Funds</span></p></div></div></section>
+<section class="section wrap"><div class="section-heading"><p class="eyebrow">Client experiences</p><h2>Testimonials</h2><p class="muted">Client feedback will be published here only with permission and after verification.</p></div><div class="testimonial-placeholder"><span aria-hidden="true">✦</span><p>We believe trust is earned through clear communication and responsible guidance.</p></div></section>
+<section class="cta-band"><div class="wrap cta-content"><div><p class="eyebrow">Have a question?</p><h2>Let’s talk about your next step.</h2><p>Connect with Forever Funds for an initial conversation.</p></div><a class="button button-light" href="https://wa.me/919571411114" target="_blank" rel="noopener">Chat on WhatsApp ↗</a></div></section>
+</main><div id="site-footer"></div></body></html>
