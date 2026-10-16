@@ -58,75 +58,8 @@
 .ff-rate-card dl{display:grid;grid-template-columns:1fr auto;gap:8px;margin:0;font-size:.9rem}.ff-rate-card dt{color:var(--muted)}.ff-rate-card dd{margin:0;text-align:right;font-weight:750;color:var(--ink)}
 .ff-rate-card canvas{display:block;width:100%;max-height:240px;margin:12px auto 0}.ff-compare-summary{border-left:4px solid var(--gold);background:#fff8df;border-radius:0 12px 12px 0;padding:15px 17px;margin:16px 0}
 @media(max-width:760px){.brand img{width:125px;height:56px}.ff-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ff-flat-compare{grid-template-columns:1fr}.ff-rate-card{padding:15px}}
-</style><style id="ff-emi-visibility">[data-calculator="emi"] [data-generic-results],[data-calculator="emi"] [data-generic-chart],[data-calculator="emi"] .table-wrap{display:none!important}</style><style id="forever-funds-corporate-theme">
-/* Forever Funds corporate theme — emerald, navy, royal gold and clean blue */
-:root{
-  --ff-green:#0F9D58;--ff-green-hover:#087443;--ff-green-soft:#E8F5EE;
-  --ff-gold:#D4AF37;--ff-gold-text:#8A6B12;
-  --ff-navy:#0F172A;--ff-blue:#1E3A8A;--ff-blue-soft:#EFF6FF;
-  --ff-white:#FFFFFF;--ff-bg:#F8FAFC;--ff-text:#1E293B;--ff-muted:#475569;
-  --ff-border:#CBD5E1;--ff-radius:14px;--ff-shadow:0 4px 16px rgba(15,23,42,.06);
-  --blue:var(--ff-navy);--blue-2:var(--ff-blue);--green:var(--ff-green);
-  --gold:var(--ff-gold);--gold-dark:var(--ff-gold-text);--ink:var(--ff-text);
-  --muted:var(--ff-muted);--line:var(--ff-border);--paper:var(--ff-white);--soft:var(--ff-bg);
-  --shadow:var(--ff-shadow);
-}
-html{scroll-padding-top:110px}
-body{color:var(--ff-text);background:var(--ff-white)}
-h1,h2,h3,h4{color:var(--ff-navy)}
-p{color:var(--ff-muted)}
-a{color:var(--ff-blue)}
-a:hover{color:var(--ff-green-hover)}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--ff-green);outline-offset:3px}
-.site-header{background:rgba(255,255,255,.98);border-bottom:1px solid var(--ff-border);box-shadow:0 2px 8px rgba(15,23,42,.035)}
-.topline{background:var(--ff-navy);color:var(--ff-white)}
-.brand img{width:154px;height:72px;object-fit:contain;flex:0 0 auto}
-.brand-copy strong{color:var(--ff-navy)}
-.brand-copy span{color:var(--ff-gold-text);font-weight:800}
-.main-nav>a,.nav-group>button{color:var(--ff-navy);font-weight:750}
-.main-nav>a:hover,.nav-group>button:hover,.main-nav a[aria-current=page],.nav-group.open>button{color:var(--ff-green-hover);background:var(--ff-green-soft)}
-.dropdown{background:var(--ff-white);border:1px solid var(--ff-border);box-shadow:var(--ff-shadow)}
-.dropdown a{color:var(--ff-navy)}
-.dropdown a:hover,.dropdown a:focus-visible{background:var(--ff-blue-soft);color:var(--ff-green-hover)}
-.button{background:var(--ff-green);color:#fff;border:1px solid var(--ff-green);box-shadow:none;font-weight:750}
-.button:hover{background:var(--ff-green-hover);border-color:var(--ff-green-hover);color:#fff;box-shadow:none}
-.button-outline{background:#fff;color:var(--ff-green-hover);border-color:var(--ff-green)}
-.button-outline:hover{background:var(--ff-green-soft);color:var(--ff-green-hover);border-color:var(--ff-green-hover)}
-.button-light{background:#fff;color:var(--ff-navy);border-color:var(--ff-border)}
-.hero{background:#fff}
-.hero h1{color:var(--ff-navy)}
-.hero h1 span{color:var(--ff-green)}
-.eyebrow,.sanskrit-motto,.brand-copy span{color:var(--ff-gold-text);font-weight:800}
-.premium-badge{background:#FFF9E5;color:var(--ff-gold-text);border:1px solid var(--ff-gold);border-radius:999px;padding:5px 12px;font-weight:800}
-.financial-icon{color:var(--ff-gold-text)}
-.lead-card,.form-card,.info-card,.card,.service-card{background:#fff;border:1px solid var(--ff-border);border-radius:var(--ff-radius);box-shadow:var(--ff-shadow)}
-input,select,textarea{color:var(--ff-navy);border-color:var(--ff-border);accent-color:var(--ff-green)}
-input:focus,select:focus,textarea:focus{border-color:var(--ff-green);outline:3px solid rgba(15,157,88,.15)}
-.calculator,.calculator-card,.calculator-panel,.calculator-result,.calculator-results,.calculator-container,.calc-card{background:var(--ff-blue-soft)}
-.calc-card{border:1px solid var(--ff-border);border-radius:var(--ff-radius)}
-.calc-list .calc-link[aria-current=true]{border-color:var(--ff-green);background:var(--ff-green-soft);color:var(--ff-navy);box-shadow:0 0 0 1px var(--ff-green) inset}
-.ff-metric,.ff-rate-card{background:#fff;border:1px solid var(--ff-border);border-radius:12px;box-shadow:none}
-.ff-metric strong,.ff-rate-total{color:var(--ff-green-hover)}
-.ff-flat-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
-.ff-rate-card{min-width:0;padding:20px;background:var(--ff-blue-soft)}
-.ff-rate-card h3{color:var(--ff-navy)}
-.ff-rate-card canvas{display:block;width:100%;max-width:340px;max-height:260px;margin:18px auto 0}
-.ff-compare-summary{background:var(--ff-green-soft);border:1px solid #86CDA8;border-radius:12px;padding:16px;color:var(--ff-navy)}
-.calc-results{background:#fff;border:1px solid var(--ff-border);border-radius:12px}
-table{border-collapse:collapse}th{background:var(--ff-navy);color:#fff}td{border-bottom:1px solid var(--ff-border);color:var(--ff-text)}tbody tr:nth-child(even){background:var(--ff-blue-soft)}
-.site-footer{background:var(--ff-bg);color:var(--ff-text);border-top:1px solid var(--ff-border)}
-.site-footer h2,.site-footer h3,.site-footer h4{color:var(--ff-navy)}
-.site-footer p,.site-footer address{color:var(--ff-muted)}
-.site-footer a{color:var(--ff-blue)}
-.site-footer a:hover{color:var(--ff-green-hover)}
-.footer-grid{gap:26px}
-.map-frame{border:1px solid var(--ff-border);border-radius:10px;max-width:100%}
-@media(max-width:760px){.brand img{width:118px;height:60px}.ff-flat-compare{grid-template-columns:1fr}.ff-rate-card{padding:16px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
-
-</style>
-</head><body><a class="skip-link" href="#main">Skip to content</a><div class="topline"><div class="wrap"><span>AMFI Registered Mutual Fund Distributor · ARN-349079</span><span>Call / WhatsApp: <a href="tel:+919571411114" style="color:#f3d66f">+91 95714 11114</a></span></div></div>
-<header class="site-header"><div class="wrap nav-wrap"><a class="brand" href="#home"><img src="./forever-funds-logo.png" alt="Forever Funds logo"><span class="brand-copy"><strong>Forever Funds</strong><span>॥ रक्षितं वर्धते ॥</span></span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">☰ <span class="sr-only">Open navigation</span></button><nav id="main-nav" class="main-nav" aria-label="Main navigation"><a href="#home">Home</a><a href="#about-us">About Us</a><div class="nav-group"><button type="button" aria-expanded="false">Investing⌄</button><div class="dropdown"><a href="#mutual-funds">Mutual Funds</a><a href="#sif">Specialised Investment Fund (SIF)</a><a href="#pms">Portfolio Management Service (PMS)</a><a href="#fixed-deposit">Fixed Deposit</a><a href="#bonds">RBI & Corporate Bonds</a><a href="#54ec-bonds">54EC Bonds</a></div></div><div class="nav-group"><button type="button" aria-expanded="false">Insurance⌄</button><div class="dropdown"><a href="#insurance--health">Health</a><a href="#insurance--term-life">Term Life</a><a href="#insurance--four-wheeler">Four Wheeler</a><a href="#insurance--two-wheeler">Two Wheeler</a><a href="#insurance--personal-accident">Personal Accident</a><a href="#insurance--travel">Travel</a><a href="#insurance--invest-plan">Invest Plan</a></div></div><div class="nav-group"><button type="button" aria-expanded="false">Other Products⌄</button><div class="dropdown"><a href="#other-products--stock-broking">Stock Broking</a><a href="#other-products--nps">NPS</a><a href="#other-products--lamf">LAMF</a></div></div><div class="nav-group"><button type="button" aria-expanded="false">Calculators⌄</button><div class="dropdown"><a href="#calculators--sip">SIP</a><a href="#calculators--goal-sip">Goal SIP</a><a href="#calculators--smart-goal">Smart Goal</a><a href="#calculators--inflation">Inflation</a><a href="#calculators--cost-of-delay">Cost of Delay</a><a href="#calculators--retirement">Retirement Planning</a><a href="#calculators--swp">SWP</a><a href="#calculators--step-up-sip">Step-Up SIP</a><a href="#calculators--lumpsum">Lumpsum</a><a href="#calculators--emi">EMI</a></div></div><a href="#fees">Fee Structure</a><a href="#contact">Contact Us</a></nav></div></header><main id="main"><div class="single-page" data-page="home" id="page-home">
+</style><style id="ff-emi-visibility">[data-calculator="emi"] [data-generic-results],[data-calculator="emi"] [data-generic-chart],[data-calculator="emi"] .table-wrap{display:none!important}</style></head><body><a class="skip-link" href="#main">Skip to content</a><div class="topline"><div class="wrap"><span>AMFI Registered Mutual Fund Distributor · ARN-349079</span><span>Call / WhatsApp: <a href="tel:+919571411114" style="color:#f3d66f">+91 95714 11114</a></span></div></div>
+<header class="site-header"><div class="wrap nav-wrap"><a class="brand" href="#home"><img src="forever-funds-logo.png" alt="Forever Funds logo"><span class="brand-copy"><strong>Forever Funds</strong><span>॥ रक्षितं वर्धते ॥</span></span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">☰ <span class="sr-only">Open navigation</span></button><nav id="main-nav" class="main-nav" aria-label="Main navigation"><a href="#home">Home</a><a href="#about-us">About Us</a><div class="nav-group"><button type="button" aria-expanded="false">Investing⌄</button><div class="dropdown"><a href="#mutual-funds">Mutual Funds</a><a href="#sif">Specialised Investment Fund (SIF)</a><a href="#pms">Portfolio Management Service (PMS)</a><a href="#fixed-deposit">Fixed Deposit</a><a href="#bonds">RBI & Corporate Bonds</a><a href="#54ec-bonds">54EC Bonds</a></div></div><div class="nav-group"><button type="button" aria-expanded="false">Insurance⌄</button><div class="dropdown"><a href="#insurance--health">Health</a><a href="#insurance--term-life">Term Life</a><a href="#insurance--four-wheeler">Four Wheeler</a><a href="#insurance--two-wheeler">Two Wheeler</a><a href="#insurance--personal-accident">Personal Accident</a><a href="#insurance--travel">Travel</a><a href="#insurance--invest-plan">Invest Plan</a></div></div><div class="nav-group"><button type="button" aria-expanded="false">Other Products⌄</button><div class="dropdown"><a href="#other-products--stock-broking">Stock Broking</a><a href="#other-products--nps">NPS</a><a href="#other-products--lamf">LAMF</a></div></div><div class="nav-group"><button type="button" aria-expanded="false">Calculators⌄</button><div class="dropdown"><a href="#calculators--sip">SIP</a><a href="#calculators--goal-sip">Goal SIP</a><a href="#calculators--smart-goal">Smart Goal</a><a href="#calculators--inflation">Inflation</a><a href="#calculators--cost-of-delay">Cost of Delay</a><a href="#calculators--retirement">Retirement Planning</a><a href="#calculators--swp">SWP</a><a href="#calculators--step-up-sip">Step-Up SIP</a><a href="#calculators--lumpsum">Lumpsum</a><a href="#calculators--emi">EMI</a></div></div><a href="#fees">Fee Structure</a><a href="#contact">Contact Us</a></nav></div></header><main id="main"><div class="single-page" data-page="home" id="page-home">
 <section class="hero wrap"><div class="hero-copy"><p class="eyebrow">Clarity today. Confidence for tomorrow.</p><h1>Your goals deserve a <span>thoughtful plan.</span></h1><p class="lead">Explore investment and insurance options with personalised guidance from Forever Funds.</p><div class="hero-actions"><a href="https://www.fundzbazar.com/customisedlinkregistration/7c7723/2364252d6721246c3c3f6326246c3c3f63262a74252d6721" target="_blank" rel="noopener noreferrer" class="button" >Start Investing</a><a class="button button-outline" href="#calculators">Explore Calculators</a></div><p class="small muted">Mutual fund investments are subject to market risks.</p></div>
 <div class="lead-card" id="start-investing"><h2>Start your journey</h2><p class="muted">Share your details and continue to our registration partner.</p><form data-redirect="https://www.fundzbazar.com/customisedlinkregistration/7c7723/2364252d6721246c3c3f6326246c3c3f63262a74252d6721" data-submit-kind="lead"><label for="lead-name">Full name</label><input autocomplete="name" id="lead-name" maxlength="100" name="name" required=""/><label for="lead-mobile">Mobile number</label><input autocomplete="tel-national" id="lead-mobile" inputmode="numeric" maxlength="10" minlength="10" name="mobile" pattern="[6-9][0-9]{9}" placeholder="10-digit Indian mobile" required="" type="tel"/><label for="lead-email">Email address</label><input autocomplete="email" id="lead-email" maxlength="254" name="email" required="" type="email"/><div aria-hidden="true" class="hp"><label>Leave this field empty<input autocomplete="off" name="website" tabindex="-1"/></label></div><label class="consent"><input name="consent" required="" type="checkbox"/><span>I agree to be contacted about my enquiry and have read the <a href="#privacy">Privacy Policy</a>.</span></label><button class="button full" type="submit">Start Investing <span aria-hidden="true">→</span></button><p aria-live="polite" class="form-status" role="status"></p></form></div></section>
 <section class="trust-strip"><div class="wrap trust-grid"><div><strong>AMFI Registered</strong><span>Mutual Fund Distributor · ARN-349079</span></div><div><strong>Insurance Guidance</strong><span>Insurance is subject matter of solicitation</span></div><div><strong>Zero professional fees</strong><span>See our fee structure for details</span></div></div></section>
