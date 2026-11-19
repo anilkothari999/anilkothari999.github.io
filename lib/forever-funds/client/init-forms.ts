@@ -6,6 +6,45 @@ declare global {
   }
 }
 
+// Shows only the fieldsets whose data-products list includes the selected product.
+// Hidden fieldsets are disabled so their required fields are skipped and not submitted.
+function syncProductFields(select: HTMLSelectElement) {
+  select.form?.querySelectorAll<HTMLFieldSetElement>("fieldset[data-products]").forEach((fieldset) => {
+    const show = (fieldset.dataset.products ?? "").split("|").includes(select.value);
+    fieldset.hidden = !show;
+    fieldset.disabled = !show;
+  });
+}
+
+function initProductFields(signal: AbortSignal) {
+  document.querySelectorAll<HTMLSelectElement>("select[data-product-select]").forEach((select) => {
+    syncProductFields(select);
+    select.addEventListener("change", () => syncProductFields(select), { signal });
+    select.form?.addEventListener("reset", () => setTimeout(() => syncProductFields(select)), { signal });
+  });
+
+  document.querySelectorAll<HTMLAnchorElement>("a[data-enquire-product]").forEach((link) => {
+    link.addEventListener(
+      "click",
+      () => {
+        const select = document.querySelector(link.hash)?.querySelector<HTMLSelectElement>("select[data-product-select]");
+        if (!select) return;
+        select.value = link.dataset.enquireProduct ?? "";
+        syncProductFields(select);
+        // Defer until the browser has finished navigating to the fragment, which resets focus.
+        setTimeout(() => select.form?.querySelector<HTMLInputElement>('input[name="name"]')?.focus({ preventScroll: true }));
+      },
+      { signal },
+    );
+  });
+}
+
+function prefillContactTopic() {
+  const topic = new URLSearchParams(window.location.search).get("topic")?.trim().slice(0, 60);
+  const message = document.querySelector<HTMLTextAreaElement>('form[data-submit-kind="contact"] textarea[name="message"]');
+  if (topic && message && !message.value) message.value = `I would like to know more about ${topic}.`;
+}
+
 export function initFormHandlers(): () => void {
   const controller = new AbortController();
   const { signal } = controller;
@@ -82,6 +121,9 @@ export function initFormHandlers(): () => void {
 
   window.addEventListener("online", retryQueue, { signal });
   void retryQueue();
+
+  initProductFields(signal);
+  prefillContactTopic();
 
   document.querySelectorAll("form[data-submit-kind]").forEach((form) => {
     if (!(form instanceof HTMLFormElement)) return;
