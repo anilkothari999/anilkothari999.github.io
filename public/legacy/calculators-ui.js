@@ -9,6 +9,7 @@
  let charts={};
  function showCalculator(id,scroll=false){let card=cards.find(c=>c.id===id||c.dataset.calculator===id);if(!card)card=cards[0];if(!card)return;
   cards.forEach(c=>c.classList.toggle('active',c===card));calcLinks.forEach(a=>{const on=a.getAttribute('href')==='#'+card.id;a.setAttribute('aria-current',on?'true':'false')});
+  const activeLink=calcLinks.find(a=>a.getAttribute('aria-current')==='true');const list=activeLink?.parentElement;if(list&&list.scrollWidth>list.clientWidth)list.scrollLeft+=activeLink.getBoundingClientRect().left-list.getBoundingClientRect().left-16;
   if(scroll)card.scrollIntoView({behavior:'smooth',block:'start'});renderMetrics(card);renderFlatCompare(card);
  }
  function renderMetrics(card){const box=card.querySelector('[data-ff-metrics]');if(!box)return;const id=card.dataset.calculator;const result=Number(card.querySelector('[data-result]')?.textContent?.replace(/[^\d.-]/g,''))||0;const years=val(card,'years');const rate=val(card,'rate');let invested=0,final=result,labels=[['Investment / principal',0],['Tenure',years+' years'],['Expected annual rate',rate+'%'],['Estimated gain',0],['Estimated final amount',final]];
@@ -21,6 +22,7 @@
   else if(id==='emi'){const p=val(card,'principal'),months=Math.max(1,Math.round(years*12));const r=rate/1200;const monthly=r===0?p/months:p*r*Math.pow(1+r,months)/(Math.pow(1+r,months)-1);invested=p;final=monthly*months;labels=[['Loan principal',p],['Tenure',years+' years'],['Annual reducing rate',rate+'%'],['Total interest',Math.max(0,final-p)],['Total repayment',final]]}
   else if(id==='swp'){invested=val(card,'principal');labels[0]=['Starting corpus',invested];labels[3]=['Estimated remaining corpus',final];labels[4]=['Monthly withdrawal',val(card,'monthly')]}
   else {const principal=val(card,'principal')||val(card,'target')||val(card,'monthly')*years*12;invested=principal;labels[0]=['Amount / principal',invested];labels[3]=['Estimated difference',Math.max(0,final-invested)]}
+  if(id!=='emi'&&result>0)labels=labels.filter(([,value])=>typeof value!=='number'||Math.round(value)!==Math.round(result));
   box.replaceChildren();labels.forEach(([label,value])=>{const item=document.createElement('div');item.className='ff-metric';const span=document.createElement('span');span.textContent=label;const strong=document.createElement('strong');strong.textContent=typeof value==='string'?value:money(value);item.append(span,strong);box.append(item)});
  }
  function renderFlatCompare(card){const panel=card.querySelector('[data-ff-flat-compare]'),summary=card.querySelector('[data-ff-compare-summary]');if(!panel)return;const isEmi=card.dataset.calculator==='emi';panel.hidden=!isEmi;if(summary)summary.hidden=!isEmi;if(!isEmi){card.querySelector('[data-generic-results]')?.removeAttribute('hidden');card.querySelector('[data-generic-chart]')?.removeAttribute('hidden');return}
