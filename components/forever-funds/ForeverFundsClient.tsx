@@ -50,9 +50,13 @@ export function ForeverFundsClient({ config }: ForeverFundsClientProps) {
 
   useEffect(() => {
     window.FOREVER_FUNDS_CONFIG = config;
-    initFormHandlers();
-    initSiteNavigation();
+    const cleanupForms = initFormHandlers();
+    const cleanupNavigation = initSiteNavigation();
     void bootCalculators();
+    return () => {
+      cleanupForms();
+      cleanupNavigation();
+    };
   }, [config]);
 
   useEffect(() => {
