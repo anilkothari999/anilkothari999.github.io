@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Forever Funds (Next.js)
 
-## Getting Started
+Modern [Next.js](https://nextjs.org) site migrated from the single-file GitHub Pages build at [anilkothari999.github.io](https://github.com/anilkothari999/anilkothari999.github.io).
 
-First, run the development server:
+## What changed
+
+- Hash-only URLs (`#mutual-funds`) are real routes (`/mutual-funds`) for SEO and sharing.
+- Global styles, header, footer, and page content are split under `lib/forever-funds/`.
+- Form handling and calculators keep the same behaviour; config moves to environment variables.
+
+## Setup
 
 ```bash
+cd forever-funds
+npm install
+cp .env.example .env.local
+# Add your Google Sheets web app URL (lead form) and optional Supabase keys.
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Re-sync from upstream HTML
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+If the legacy `index.html` changes on GitHub:
 
-## Learn More
+```bash
+curl -sL https://raw.githubusercontent.com/anilkothari999/anilkothari999.github.io/main/index.html -o /tmp/forever-funds-index.html
+node scripts/extract-from-legacy-html.mjs /tmp/forever-funds-index.html
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deploy to [Vercel](https://vercel.com) or any Node host (`npm run build` && `npm run start`). Set the same `NEXT_PUBLIC_*` variables in production.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Git (personal account)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is its own git repo. Push to your personal GitHub (e.g. `atuljain2995/forever-funds`) — not a work org remote.
