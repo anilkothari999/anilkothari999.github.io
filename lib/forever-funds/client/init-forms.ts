@@ -6,7 +6,9 @@ declare global {
   }
 }
 
-export function initFormHandlers() {
+export function initFormHandlers(): () => void {
+  const controller = new AbortController();
+  const { signal } = controller;
   const config = window.FOREVER_FUNDS_CONFIG ?? ({} as ForeverFundsConfig);
   const QUEUE_KEY = "ff_pending_submissions_v1";
   const clean = (s: FormDataEntryValue | null) =>
@@ -78,7 +80,7 @@ export function initFormHandlers() {
     setQueue(remain);
   }
 
-  window.addEventListener("online", retryQueue);
+  window.addEventListener("online", retryQueue, { signal });
   void retryQueue();
 
   document.querySelectorAll("form[data-submit-kind]").forEach((form) => {
@@ -173,6 +175,8 @@ export function initFormHandlers() {
         if (status) status.textContent = "Thank you. Your enquiry has been received.";
       }
       if (button instanceof HTMLButtonElement) button.disabled = false;
-    });
+    }, { signal });
   });
+
+  return () => controller.abort();
 }
